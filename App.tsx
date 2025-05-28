@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import "@/global.css";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import { StyleSheet, Text, View } from "react-native";
+import { Button, ButtonText } from "./components/ui/button";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GluestackUIProvider mode="light">
+      <View className="flex-1 items-center justify-center">
+        <Text className="text-red-400 text-2xl font-bold">HELLO!</Text>
+        <Button>
+          <ButtonText>Click</ButtonText>
+        </Button>
+        <StatusBar style="auto" />
+      </View>
+    </GluestackUIProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

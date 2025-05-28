@@ -1,14 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
+  "jsx": "react-native",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "strict": true,
+    "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "tailwind.config": [
-        "./tailwind.config.js"
-      ]
+      "@/*": ["./*"]
     }
   }
 }

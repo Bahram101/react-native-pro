@@ -8,7 +8,7 @@ export default function App() {
   return (
     <GluestackUIProvider mode="light">
       <View className="flex-1 items-center justify-center">
-        <Text className="text-red-400 text-2xl font-bold">HELLO!</Text>
+        <Text className="text-purple-400 text-2xl font-bold">HELLO!</Text>
         <Button>
           <ButtonText>Click</ButtonText>
         </Button>

@@ -3,13 +3,11 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { Pressable, Text, View } from 'react-native'
 
 import Loader from '@/components/ui/Loader'
-import { Button, ButtonText } from '@/components/ui/button'
+// import { Button, ButtonText } from '@/components/ui/button'
 
 import { IAuthFormData } from '@/types/auth.interface'
 
-// import Button from '@/components/ui/button/Button'
-
-// import { Button } from '../../../../components/button'
+import Buttonn from '@/components/ui/button/Button' 
 
 const Auth: FC = () => {
   const [isReg, setIsReg] = useState(false)
@@ -35,12 +33,12 @@ const Auth: FC = () => {
           <>
             {/* {Auth Fields} */}
 
-            <Button
+            <Buttonn
               onPress={handleSubmit(onSubmit)}
-              className='bg-primary h-14 rounded-lg'
+              className=''
             >
-              <ButtonText>{isReg ? 'Sign up' : 'Sign in'}</ButtonText>
-            </Button>
+              {isReg ? 'Sign up' : 'Sign in'} 
+            </Buttonn>
 
             <Pressable onPress={() => setIsReg(!isReg)}>
               <Text className='text-black text-center text-base mt-6 flex  '>

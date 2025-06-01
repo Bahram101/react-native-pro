@@ -10,10 +10,12 @@ import Buttonn from '@/components/ui/button/Button'
 import { IAuthFormData } from '@/types/auth.interface'
 
 import AuthFields from './AuthFields'
+import Field from '@/components/ui/field/Field'
+import { validEmail } from './email.regex'
 
 const Auth: FC = () => {
   const [isReg, setIsReg] = useState(false)
-  const { handleSubmit, reset, control } = useForm<IAuthFormData>({
+  const { handleSubmit, control } = useForm<IAuthFormData>({
     mode: 'onChange'
   })
 
@@ -33,7 +35,21 @@ const Auth: FC = () => {
           <Loader />
         ) : (
           <>
-            <AuthFields control={control}/>
+            {/* <AuthFields control={control}/> */}
+
+            <Field<IAuthFormData>
+              placeholder='Enter email'
+              control={control}
+              name='email'
+              rules={{
+                required: 'Email is required!',
+                pattern: {
+                  value: validEmail,
+                  message: 'Please enter a valid email address'
+                }
+              }}
+              keyboardType='email-address'
+            />
 
             <Buttonn onPress={handleSubmit(onSubmit)} className=''>
               {isReg ? 'Sign up' : 'Sign in'}

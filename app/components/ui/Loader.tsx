@@ -4,7 +4,7 @@ import { ActivityIndicator } from 'react-native'
 type Props = {}
 
 const Loader: FC = (props: Props) => {
-  return <ActivityIndicator size='large' color='#47AA52' />
+  return <ActivityIndicator size='large'  className='color-primary' />
 }
 
 export default Loader

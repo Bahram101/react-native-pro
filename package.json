@@ -25,6 +25,7 @@
     "button": "^1.1.1",
     "clsx": "^2.1.1",
     "expo": "~53.0.9",
+    "expo-splash-screen": "~0.30.8",
     "expo-status-bar": "~2.2.3",
     "gluestack-ui": "^0.7.22",
     "nativewind": "^4.1.23",

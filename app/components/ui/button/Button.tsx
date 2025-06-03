@@ -6,13 +6,13 @@ import { Button, ButtonText } from '@/components/ui/button'
 
 import { IButton } from './button.interface'
 
-const Buttonn: FC<PropsWithChildren<IButton>> = ({
+const CustomBtn: FC<PropsWithChildren<IButton>> = ({
   children,
   className,
   ...rest
 }) => {
   return (
-    <Button className={cn('bg-primary w-full mt-3 rounded-lg', className)} {...rest}>
+    <Button className={cn('bg-primary w-full mt-4 rounded-lg', className)} {...rest}>
       <ButtonText className='text-white text-center font-medium text-lg'>
         {children}
       </ButtonText>
@@ -20,4 +20,4 @@ const Buttonn: FC<PropsWithChildren<IButton>> = ({
   )
 }
 
-export default Buttonn
+export default CustomBtn

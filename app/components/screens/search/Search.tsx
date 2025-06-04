@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const Home = () => {
+const Search = () => {
   return (
     <View className='flex-1 items-center justify-center'>
-      <Text>Home</Text>
+      <Text>Search</Text>
     </View>
   )
 }
 
-export default Home
+export default Search

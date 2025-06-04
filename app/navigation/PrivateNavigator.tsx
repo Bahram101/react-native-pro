@@ -1,10 +1,30 @@
-import React from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import React, { FC } from 'react'
 
-type Props = {}
+import Auth from '@/components/screens/auth/Auth'
 
-const PrivateNavigator = (props: Props) => {
+import { useAuth } from '@/hooks/useAuth'
+
+import { TypeRootStackParamList } from './navigation.types'
+import { routes } from './routes'
+
+const Stack = createNativeStackNavigator<TypeRootStackParamList>()
+
+const PrivateNavigator: FC = () => {
+  const { user } = useAuth()
+
   return (
-    <div>PrivateNavigator</div>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+    >
+      {user ? (
+        routes.map(route => <Stack.Screen key={route.name} {...route} />)
+      ) : (
+        <Stack.Screen name='Auth' component={Auth} />
+      )}
+    </Stack.Navigator>
   )
 }
 

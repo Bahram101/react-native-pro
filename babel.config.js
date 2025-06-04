@@ -19,7 +19,8 @@ module.exports = function (api) {
           rootPathSuffix: 'app',
           rootPathPrefix: '@/'
         }
-      ]
+      ],
+      ['inline-dotenv']
     ]
   }
 }

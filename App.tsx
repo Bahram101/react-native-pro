@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import Toast from 'react-native-toast-message'
 
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
 
@@ -16,6 +17,7 @@ export default function App() {
         <SafeAreaProvider>
           <Navigation />
           <StatusBar style='auto' />
+          <Toast />
         </SafeAreaProvider>
       </AuthProvider>
     </GluestackUIProvider>

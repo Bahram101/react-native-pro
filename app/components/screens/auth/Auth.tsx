@@ -8,18 +8,22 @@ import CustomBtn from '@/components/ui/button/Button'
 import { IAuthFormData } from '@/types/auth.interface'
 
 import AuthFields from './AuthFields'
+import { useAuthMutations } from './useAuthMutations'
 
 const Auth: FC = () => {
   const [isReg, setIsReg] = useState(false)
-  const { handleSubmit, control } = useForm<IAuthFormData>({
+  const { handleSubmit, control, reset } = useForm<IAuthFormData>({
     mode: 'onChange'
   })
 
+  const { isLoading, loginSync, registerSync } = useAuthMutations(reset)
+
   const onSubmit: SubmitHandler<IAuthFormData> = data => {
     console.log('dataaaaa', data)
-  }
+    if(isReg) registerSync(data)
+    else loginSync(data)
 
-  const isLoading = false
+  }
 
   return (
     <View className='flex-1 items-center justify-center'>
@@ -31,6 +35,7 @@ const Auth: FC = () => {
             <Text className='text-2xl mt-10 text-center'>
               {isReg ? 'Sign up' : 'Sign in'}
             </Text>
+            
             <AuthFields control={control} />
 
             <CustomBtn onPress={handleSubmit(onSubmit)} className='h-14'>

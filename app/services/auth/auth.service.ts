@@ -17,6 +17,8 @@ export const AuthService = {
 				data: { email, password }
 			})
 
+			console.log('response', response)
+
 			if (response.accessToken) {
 				await saveToStorage(response)
 				console.log('Access token saved to storage')

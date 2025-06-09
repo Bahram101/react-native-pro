@@ -9,13 +9,14 @@ import { useAuth } from '@/hooks/useAuth'
 import { AuthService } from '@/services/auth/auth.service'
 
 import { useProfile } from './useProfile'
+import Layout from '@/components/layout/Layout'
 
 const Profile = () => {
   const { setUser } = useAuth()
   const { profile } = useProfile()
 
   return (
-    <View className='flex-1 items-center justify-center'>
+    <Layout>
       <Heading isCenter>Profile</Heading>
 
       <View className='my-6 items-center justify-center'>
@@ -31,7 +32,7 @@ const Profile = () => {
       >
         Log out
       </CustomBtn>
-    </View>
+    </Layout>
   )
 }
 

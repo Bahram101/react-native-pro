@@ -13,7 +13,7 @@ import Layout from '@/components/layout/Layout'
 
 const Profile = () => {
   const { setUser } = useAuth()
-  const { profile } = useProfile()
+  const { profile, isLoading } = useProfile() 
 
   return (
     <Layout>

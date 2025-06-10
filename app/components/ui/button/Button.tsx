@@ -11,7 +11,7 @@ const CustomBtn: FC<PropsWithChildren<IButton>> = ({
   className,
   ...rest
 }) => {
-  console.log('rest', rest)
+ 
   return (
     <Button className={cn('bg-primary w-full mt-4 rounded-lg', className)} {...rest}>
       <ButtonText className='text-white text-center font-medium text-lg'>

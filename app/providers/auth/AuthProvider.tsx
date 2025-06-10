@@ -24,7 +24,7 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     const checkAccessToken = async () => {
       try {
         const accessToken = await getAccessToken()
-        console.log('Access Token:', accessToken)
+        // console.log('Access Token:', accessToken)
         if(accessToken){
           const user = await getUserFromStorage()
           if (isMounted) {
@@ -44,7 +44,7 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     }
   }, [])
 
-  console.log('USER',user)
+  // console.log('USER',user)
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

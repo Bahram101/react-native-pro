@@ -18,11 +18,10 @@ const Auth: FC = () => {
 
   const { isLoading, loginSync, registerSync } = useAuthMutations(reset)
 
-  const onSubmit: SubmitHandler<IAuthFormData> = data => {
-    console.log('dataaaaa', data)
+  const onSubmit: SubmitHandler<IAuthFormData> = data => { 
     if(isReg) registerSync(data)
     else loginSync(data)
-
+    console.log('Auth screen', data)
   }
 
   return (

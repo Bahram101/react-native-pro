@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react'
 import { Text, View } from 'react-native'
 
+import Layout from '@/components/layout/Layout'
+
 import { AuthService } from '@/services/auth/auth.service'
 
-const Home = () => {
+import Header from './Header'
+import Banner from './banner/Banner'
+import Categories from './categories/Categories'
 
+const Home = () => {
   return (
-    <View className='flex-1 items-center justify-center'>
-      <Text>Home</Text>
-    </View>
+    <Layout>
+      <Header />
+      <Banner />
+      <Categories />
+    </Layout>
   )
 }
 

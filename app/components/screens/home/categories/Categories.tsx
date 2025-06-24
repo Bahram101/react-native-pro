@@ -30,9 +30,6 @@ const Categories: FC = () => {
           >
             <Image
               source={getMediaSource(category.image)}
-              // source={{
-              //   uri: 'http://192.168.0.62:8080/uploads/images/categories/burger.png'
-              // }}
               onError={e => {
                 console.warn('Image load error:', e.nativeEvent.error)
               }}

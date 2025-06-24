@@ -5,7 +5,7 @@ import { ICategory } from '@/types/category.interface'
 export const CategoryService = {
   async getAll() {
     return request<ICategory[]>({
-      url: '/categories/get-all',
+      url: '/categories',
       method: 'GET'
     })
   },

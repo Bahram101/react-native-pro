@@ -8,6 +8,7 @@ import { AuthService } from '@/services/auth/auth.service'
 import Header from './Header'
 import Banner from './banner/Banner'
 import Categories from './categories/Categories'
+import Products from './products/Products'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Header />
       <Banner />
       <Categories />
+      <Products />
     </Layout>
   )
 }

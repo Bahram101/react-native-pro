@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react'
-import { Text, View } from 'react-native'
+import React from 'react'
 
 import Layout from '@/components/layout/Layout'
-
-import { AuthService } from '@/services/auth/auth.service'
 
 import Header from './Header'
 import Banner from './banner/Banner'

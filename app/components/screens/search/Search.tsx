@@ -11,9 +11,10 @@ import Loader from '@/components/ui/Loader'
 import Catalog from '@/components/ui/catalog/Catalog'
 
 const Search = () => {
-  const { searchTerm, isLoading, control, products } = useSearch()
+  const { searchTerm, control, isLoading, products } = useSearch()
 
-  console.log('prods', JSON.stringify(products, null, 2))
+  // console.log('products', JSON.stringify(products, null, 2))
+  // console.log('control', JSON.stringify(control, null, 2))
 
   return (
     <Layout>
@@ -27,11 +28,11 @@ const Search = () => {
           keyboardType='web-search'
         />
       </View>
-      {!!searchTerm ? (
+      {!!searchTerm && (
         <View className='mt-2'>
           {isLoading ? <Loader /> : <Catalog products={products || []} />}
         </View>
-      ) : null}
+      )}
     </Layout>
   )
 }

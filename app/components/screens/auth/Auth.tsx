@@ -26,7 +26,7 @@ const Auth: FC = () => {
 
   return (
     <View className='flex-1 items-center justify-center'>
-      <View className='w-10/12 '>
+      <View className='w-10/12'>
         {isLoading ? (
           <Loader />
         ) : (

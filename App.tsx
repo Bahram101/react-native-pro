@@ -11,7 +11,7 @@ import Navigation from '@/navigation/Navigation'
 
 import './global.css'
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false

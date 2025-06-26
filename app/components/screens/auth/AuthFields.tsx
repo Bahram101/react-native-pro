@@ -17,6 +17,8 @@ const AuthFields: FC<IAuthFields> = ({ control }) => {
   return (
     <>
       <Field<IAuthFormData>
+        placeholder='Enter email'
+        keyboardType='email-address'
         control={control}
         name='email'
         rules={{
@@ -26,11 +28,11 @@ const AuthFields: FC<IAuthFields> = ({ control }) => {
             message: 'Please enter a valid email address'
           }
         }}
-        keyboardType='email-address'
-        placeholder='Enter email'
       />
 
       <Field<IAuthFormData>
+        placeholder='Enter password'
+        secureTextEntry
         control={control}
         name='password'
         rules={{
@@ -40,8 +42,6 @@ const AuthFields: FC<IAuthFields> = ({ control }) => {
             message: 'Password should be minimum 6 characters long'
           }
         }}
-				secureTextEntry
-				placeholder='Enter password'
       />
     </>
   )

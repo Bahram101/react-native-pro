@@ -1,11 +1,19 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+
+import Layout from '@/components/layout/Layout'
+import Catalog from '@/components/ui/catalog/Catalog'
+
+import { useProfile } from '../profile/useProfile'
 
 const Favorites = () => {
+  const { profile } = useProfile()
+
+  console.log('profile', JSON.stringify(profile?.favorites, null, 2))
+
   return (
-    <View className='flex-1 items-center justify-center'>
-      <Text>Favorites</Text>
-    </View>
+    <Layout>
+      <Catalog title='Favorites' products={profile?.favorites || []} />
+    </Layout>
   )
 }
 

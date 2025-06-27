@@ -15,7 +15,7 @@ const BottomMenu: FC<IBottomMenu> = props => {
   const { bottom } = useSafeAreaInsets()
   return (
     <View
-      className='pt-5 px-2 flex-row justify-between items-center w-full border-t border-t-solid border-t-[#bbbbbb] bg-white'
+      className='pt-5 px-8 flex-row justify-between items-center w-full border-t border-t-solid border-t-[#bbbbbb] bg-white'
       style={{
         paddingBottom: bottom + 20
       }}

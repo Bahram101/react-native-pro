@@ -1,11 +1,28 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
+
+import Layout from '@/components/layout/Layout'
+import Loader from '@/components/ui/Loader'
+import Catalog from '@/components/ui/catalog/Catalog'
+
+import { useCategory } from './useCategory'
 
 const Category = () => {
+  const { category, products, isLoading } = useCategory()
+
+  console.log('category',category)
+  console.log('products', JSON.stringify(products, null, 2))
+
+  if (isLoading) return <Loader />
+
   return (
-    <View className='flex-1 justify-center items-center'>
-      <Text>Category</Text>
-    </View>
+    <Layout>
+      {category ? (
+        <Catalog title={category.name} products={products || []} />
+      ) : (
+        <Text>Category not found</Text>
+      )}
+    </Layout>
   )
 }
 

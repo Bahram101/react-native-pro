@@ -1,7 +1,5 @@
 import { IProduct } from '@/types/product.interface'
 
-import { getProductsUrl } from '@/config/api.config'
-
 import { request } from './api/request.api'
 
 export const ProductService = {
@@ -19,16 +17,16 @@ export const ProductService = {
 
   async getBySlug(slug: string) {
     return request<IProduct>({
-      url: `/by-slug/${slug}`,
+      url: `/products/by-slug/${slug}`,
       method: 'GET'
     })
   },
 
   async getByCategory(categorySlug: string) {
     return request<IProduct>({
-      url: `/by-category/${categorySlug}`,
+      url: `/products/by-category/${categorySlug}`,
       method: 'GET',
-      data: { categorySlug }
+      // data: { categorySlug }
     })
   }
 }

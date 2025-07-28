@@ -21,7 +21,6 @@ const Auth: FC = () => {
   const onSubmit: SubmitHandler<IAuthFormData> = data => { 
     if(isReg) registerSync(data)
     else loginSync(data)
-    console.log('Auth screen', data)
   }
 
   return (

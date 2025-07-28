@@ -9,7 +9,7 @@ export const useSearch = () => {
   const { searchTerm, debouncedSearch, control } = useSearchForm()
 
   const qc = useQueryClient()
-  const isEnabled = debouncedSearch?.length > 2
+  const isEnabled = !!debouncedSearch && debouncedSearch?.length > 2
 
   const { data: products, isLoading } = useQuery({
     queryKey: ['search products', debouncedSearch],

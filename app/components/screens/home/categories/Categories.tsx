@@ -30,9 +30,6 @@ const Categories: FC = () => {
           >
             <Image
               source={getMediaSource(category.image)}
-              onError={e => {
-                console.warn('Image load error:', e.nativeEvent.error)
-              }}
               className='w-10 h-8 mb-2'
               style={{
                 resizeMode: 'cover'

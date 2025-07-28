@@ -10,9 +10,6 @@ import { useCategory } from './useCategory'
 const Category = () => {
   const { category, products, isLoading } = useCategory()
 
-  console.log('category',category)
-  console.log('products', JSON.stringify(products, null, 2))
-
   if (isLoading) return <Loader />
 
   return (

@@ -19,14 +19,12 @@ export const AuthService = {
 
       if (response.accessToken) {
         await saveToStorage(response)
-        // console.log('Access token saved to storage')
       } else {
         // console.log('No access token received')
       }
 
       return response
     } catch (error) {
-      // console.error('Error in main function: ', error)
       throw error
     }
   },

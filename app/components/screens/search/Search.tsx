@@ -13,9 +13,6 @@ import Catalog from '@/components/ui/catalog/Catalog'
 const Search = () => {
   const { searchTerm, control, isLoading, products } = useSearch()
 
-  // console.log('products', JSON.stringify(products, null, 2))
-  // console.log('control', JSON.stringify(control, null, 2))
-
   return (
     <Layout>
       <Heading>Search</Heading>

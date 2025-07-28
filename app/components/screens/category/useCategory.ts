@@ -8,8 +8,6 @@ import { ProductService } from '@/services/product.service'
 export const useCategory = () => {
   const { params } = useTypedRoute<'Category'>()
 
-  // console.log('params', params)
-
   const { data: category, isLoading: isCategoryLoading } = useQuery({
     queryKey: ['get category by slug', params.slug],
     queryFn: () => CategoryService.getBySlug(params.slug)

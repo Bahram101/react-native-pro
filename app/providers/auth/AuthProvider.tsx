@@ -13,7 +13,7 @@ import { getAccessToken, getUserFromStorage } from '@/services/auth/auth.helper'
 
 export const AuthContext = createContext({} as IContext)
 
-let ignore = SplashScreen.preventAutoHideAsync()
+// let ignore = SplashScreen.preventAutoHideAsync()
 
 const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const [user, setUser] = useState<TypeUserState>({} as IUser)
@@ -24,7 +24,6 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     const checkAccessToken = async () => {
       try {
         const accessToken = await getAccessToken()
-        // console.log('Access Token:', accessToken)
         if(accessToken){
           const user = await getUserFromStorage()
           if (isMounted) {
@@ -44,7 +43,7 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     }
   }, [])
 
-  // console.log('USER',user)
+  console.log('USER',user)
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

@@ -10,6 +10,7 @@ import { useProduct } from './useProduct'
 
 const Product = () => {
   const { product, isLoading } = useProduct()
+  console.log('Product:', product)
 
   if (isLoading) return <Loader />
   if (!product) return null

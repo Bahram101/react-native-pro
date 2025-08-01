@@ -43,7 +43,7 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     }
   }, [])
 
-  console.log('USER',user)
+  // console.log('USER',user)
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

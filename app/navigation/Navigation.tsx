@@ -29,7 +29,7 @@ const Navigation = () => {
 
   useCheckAuth(currentRoute)
 
-  console.log('currentRoute', currentRoute)
+  // console.log('currentRoute', currentRoute)
   console.log('user', user)
 
   return (

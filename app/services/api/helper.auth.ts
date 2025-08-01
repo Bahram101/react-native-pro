@@ -8,11 +8,12 @@ import { saveToStorage } from '@/services/auth/auth.helper'
 import { API_URL, getAuthUrl } from '@/config/api.config'
 
 export const getNewTokens = async () => {
+	console.log('Requesting new tokens...')
 	try {
-		const refreshToken = await getItemAsync(EnumSecureStore.REFRESH_TOKEN)
+		const refreshToken = await getItemAsync(EnumSecureStore.REFRESH_TOKEN) 
 
 		const response = await axios.post<string, { data: IAuthResponse }>(
-			API_URL + getAuthUrl('/login/access-token'),
+			API_URL + '/auth/login/access-token',
 			{ refreshToken },
 			{
 				headers: {
@@ -20,6 +21,8 @@ export const getNewTokens = async () => {
 				}
 			}
 		)
+
+		console.log('New tokens received:::', response.data)
 
 		if (response.data.accessToken) await saveToStorage(response.data)
 

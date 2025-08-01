@@ -1,12 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+import { useTypedNavigation } from '@/hooks/useTypedNavigation'
+
 import { EnumAsyncStorage, IAuthResponse } from '@/types/auth.interface'
 
 import { deleteTokensStorage, saveToStorage } from '@/services/auth/auth.helper'
 
 import { getAuthUrl } from '@/config/api.config'
 
-import { request } from '../api/request.api'
+import { request } from '../api/request.api' 
 
 export const AuthService = {
   async main(variant: 'reg' | 'login', email: string, password: string) {
@@ -30,7 +32,8 @@ export const AuthService = {
   },
 
   async logout() {
+    console.log('Logging out...')
     await deleteTokensStorage()
-    await AsyncStorage.removeItem(EnumAsyncStorage.USER)
+    await AsyncStorage.removeItem(EnumAsyncStorage.USER) 
   }
 }

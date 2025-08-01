@@ -17,7 +17,7 @@ export const useSearch = () => {
     enabled: isEnabled
   })
 
-  console.log('isEnabled', isEnabled)
+  // console.log('isEnabled', isEnabled)
 
   useEffect(() => {
     if (!isEnabled) {

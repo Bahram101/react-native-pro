@@ -17,8 +17,6 @@ export const useSearch = () => {
     enabled: isEnabled
   })
 
-  // console.log('isEnabled', isEnabled)
-
   useEffect(() => {
     if (!isEnabled) {
       qc.removeQueries({ queryKey: ['search products', debouncedSearch] })

@@ -9,8 +9,7 @@ import { getMediaSource } from '@/utils/getMediaSource'
 import { useProduct } from './useProduct'
 
 const Product = () => {
-  const { product, isLoading } = useProduct()
-  // console.log('Product:', product)
+  const { product, isLoading } = useProduct() 
 
   if (isLoading) return <Loader />
   if (!product) return null

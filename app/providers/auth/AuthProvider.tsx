@@ -7,13 +7,16 @@ import {
   useState
 } from 'react'
 
-import { IContext, TypeUserState } from './auth-provider.interface'
 import { IUser } from '@/types/user.interface'
+
 import { getAccessToken, getUserFromStorage } from '@/services/auth/auth.helper'
+
+import { IContext, TypeUserState } from './auth-provider.interface'
+import { registerSetUser } from '@/services/auth/auth.helper-context'
 
 export const AuthContext = createContext({} as IContext)
 
-// let ignore = SplashScreen.preventAutoHideAsync()
+let ignore = SplashScreen.preventAutoHideAsync()
 
 const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const [user, setUser] = useState<TypeUserState>({} as IUser)
@@ -24,7 +27,8 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     const checkAccessToken = async () => {
       try {
         const accessToken = await getAccessToken()
-        if(accessToken){
+        console.log('accessTokenFromAuth', accessToken)
+        if (accessToken) {
           const user = await getUserFromStorage()
           if (isMounted) {
             setUser(user)
@@ -41,6 +45,10 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     return () => {
       isMounted = false
     }
+  }, [])
+
+  useEffect(() => {
+    registerSetUser(setUser)
   }, [])
 
   // console.log('USER',user)

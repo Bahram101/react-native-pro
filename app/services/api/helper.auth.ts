@@ -8,24 +8,28 @@ import { saveToStorage } from '@/services/auth/auth.helper'
 import { API_URL, getAuthUrl } from '@/config/api.config'
 
 export const getNewTokens = async () => {
-	console.log('Requesting new tokens...')
-	try {
-		const refreshToken = await getItemAsync(EnumSecureStore.REFRESH_TOKEN) 
+  try {
+    const refreshToken = await getItemAsync(EnumSecureStore.REFRESH_TOKEN)
 
-		const response = await axios.post<string, { data: IAuthResponse }>(
-			API_URL + '/auth/login/access-token',
-			{ refreshToken },
-			{
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			}
-		)
+    // if (!refreshToken) {
+    //   return null
+    // }
 
-		console.log('New tokens received:::', response.data)
+    const response = await axios.post<string, { data: IAuthResponse }>(
+      API_URL + '/auth/refresh-token',
+      { refreshToken },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
 
-		if (response.data.accessToken) await saveToStorage(response.data)
+    if (response.data.accessToken) await saveToStorage(response.data)
 
-		return response
-	} catch (e) {}
+    return response
+  } catch (e) {
+    console.error('Ошибка при обновлении токен', e)
+    throw e
+  }
 }

@@ -1,23 +1,48 @@
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { getItemAsync } from 'expo-secure-store'
 import Toast from 'react-native-toast-message'
+
+import { EnumSecureStore } from '@/types/auth.interface'
 
 import { errorCatch } from './error.api'
 import instance from './interceptors.api'
 
 export const request = async <T>(config: AxiosRequestConfig) => {
-	const onSuccess = (response: AxiosResponse<T>) => {
-		return response.data
-	}
+  const onSuccess = (response: AxiosResponse<T>) => {
+    return response.data
+  }
 
-	const onError = (error: AxiosError<T>) => {
-		Toast.show({
-			type: 'error',
-			text1: 'Request error',
-			text2: errorCatch(error)
-		})
+  // const onError = async (error: AxiosError<T>) => {
+  //   const { message, statusCode } = errorCatch(error)
 
-		return Promise.reject(error)
-	}
+  //   // Проверяем статус 401 и наличие refresh токена
+  //   if (statusCode === 401) {
+  //     const refreshToken = await getItemAsync(EnumSecureStore.REFRESH_TOKEN)
 
-	return instance(config).then(onSuccess).catch(onError)
+  //     // Если refresh токена нет — не показываем ошибку (это ожидаемо)
+  //     if (!refreshToken) {
+  //       return Promise.reject(error)
+  //     }
+  //   }
+
+  //   Toast.show({
+  //     type: 'error',
+  //     text1: 'Request error',
+  //     text2: message
+  //   })
+
+  //   return Promise.reject(error)
+  // }
+
+  const onError = (error: AxiosError<T>) => {
+    Toast.show({
+      type: 'error',
+      text1: 'Request error',
+      text2: errorCatch(error)
+    })
+
+    return Promise.reject(error)
+  }
+
+  return instance(config).then(onSuccess).catch(onError)
 }

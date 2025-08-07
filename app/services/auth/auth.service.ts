@@ -8,7 +8,7 @@ import { deleteTokensStorage, saveToStorage } from '@/services/auth/auth.helper'
 
 import { getAuthUrl } from '@/config/api.config'
 
-import { request } from '../api/request.api' 
+import { request } from '../api/request.api'
 
 export const AuthService = {
   async main(variant: 'reg' | 'login', email: string, password: string) {
@@ -21,9 +21,7 @@ export const AuthService = {
 
       if (response.accessToken) {
         await saveToStorage(response)
-      } else {
-        // console.log('No access token received')
-      }
+      } 
 
       return response
     } catch (error) {
@@ -32,8 +30,7 @@ export const AuthService = {
   },
 
   async logout() {
-    console.log('Logging out...')
     await deleteTokensStorage()
-    await AsyncStorage.removeItem(EnumAsyncStorage.USER) 
+    await AsyncStorage.removeItem(EnumAsyncStorage.USER)
   }
 }

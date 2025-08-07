@@ -13,7 +13,11 @@ import { useAuthMutations } from './useAuthMutations'
 const Auth: FC = () => {
   const [isReg, setIsReg] = useState(false)
   const { handleSubmit, control, reset } = useForm<IAuthFormData>({
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues:{
+      email: 'test@test.ru',
+      password: '123456'
+    }
   })
 
   const { isLoading, loginSync, registerSync } = useAuthMutations(reset)

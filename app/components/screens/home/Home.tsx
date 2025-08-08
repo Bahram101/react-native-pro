@@ -8,9 +8,11 @@ import Categories from './categories/Categories'
 import Products from './products/Products'
 
 const Home = () => {
+
+
   
   return (
-    <Layout>
+    <Layout> 
       <Header />
       <Banner />
       <Categories />

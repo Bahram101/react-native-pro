@@ -13,6 +13,7 @@ import { request } from '../api/request.api'
 export const AuthService = {
   async main(variant: 'reg' | 'login', email: string, password: string) {
     try {
+      console.log('AUTHSSERVICE')
       const response = await request<IAuthResponse>({
         url: getAuthUrl(`/${variant === 'reg' ? 'register' : 'login'}`),
         method: 'POST',

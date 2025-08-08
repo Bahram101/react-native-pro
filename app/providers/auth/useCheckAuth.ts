@@ -7,7 +7,7 @@ import { EnumSecureStore } from '@/types/auth.interface'
 
 import { errorCatch } from '@/services/api/error.api'
 import { getNewTokens } from '@/services/api/helper.auth'
-import { getAccessToken } from '@/services/auth/auth.helper'
+import { getAccessToken, getRefreshToken } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
 
 export const useCheckAuth = (routeName?: string) => {
@@ -15,7 +15,9 @@ export const useCheckAuth = (routeName?: string) => {
 
   useEffect(() => {
     const checkAccessToken = async () => {
-      const accessToken = await getAccessToken()
+      // const accessToken = await getAccessToken()
+      const accessToken = false;
+      console.log('GET_NEW_TOKENS-useCheckAuthh')
       if (accessToken) {
         try {
           await getNewTokens()
@@ -33,7 +35,7 @@ export const useCheckAuth = (routeName?: string) => {
 
   useEffect(() => {
     const checkRefreshToken = async () => {
-      const refreshToken = await getItemAsync(EnumSecureStore.REFRESH_TOKEN)
+      const refreshToken = await getRefreshToken()
       if (!refreshToken && user) {
         await AuthService.logout()
         setUser(null)

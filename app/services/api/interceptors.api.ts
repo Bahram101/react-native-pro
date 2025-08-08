@@ -43,14 +43,15 @@ instance.interceptors.response.use(
     if (error.status === 401 && error.config && !error.config._isRetry) {
       originalRequest._isRetry = true
       try {
-        console.log('TRYYY')
+        console.log('TRYYY')        
         await getNewTokens()
         return instance.request(originalRequest)
       } catch (refreshError) {
-        if (errorCatch(refreshError) === 'jwt expired') {
-          // await deleteTokensStorage()
-          await logoutWithContext(AuthService.logout)
-          // await AuthService.logout()
+        const errorMessage = errorCatch(refreshError)
+        console.log('errorMessage', errorMessage)
+        if (errorCatch(refreshError) === 'jwt expired') { 
+          console.log('Logout')
+          await logoutWithContext(AuthService.logout) 
         }
       }
     }

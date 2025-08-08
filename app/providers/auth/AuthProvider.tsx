@@ -27,7 +27,6 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     const checkAccessToken = async () => {
       try {
         const accessToken = await getAccessToken()
-        console.log('accessTokenFromAuth', accessToken)
         if (accessToken) {
           const user = await getUserFromStorage()
           if (isMounted) {

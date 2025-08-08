@@ -13,6 +13,11 @@ export const getAccessToken = async () => {
   return accessToken || null
 }
 
+export const getRefreshToken = async ()=>{
+  const refreshToken = await getItemAsync(EnumSecureStore.REFRESH_TOKEN)
+  return refreshToken || null
+}
+
 export const saveTokensStorage = async (data: ITokens) => {
   await setItemAsync(EnumSecureStore.ACCESS_TOKEN, data.accessToken)
   await setItemAsync(EnumSecureStore.REFRESH_TOKEN, data.refreshToken)

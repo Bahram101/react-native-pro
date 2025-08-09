@@ -12,7 +12,7 @@ import Catalog from '@/components/ui/catalog/Catalog'
 
 const Search = () => {
   const { searchTerm, control, isLoading, products } = useSearch()
-
+  
   return (
     <Layout>
       <Heading>Search</Heading>

@@ -20,12 +20,13 @@ let ignore = SplashScreen.preventAutoHideAsync()
 
 const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const [user, setUser] = useState<TypeUserState>({} as IUser)
-  const [isAuthChecked, setIsAuthChecked] = useState(false)
+  // const [isAuthChecked, setIsAuthChecked] = useState(false)
 
   useEffect(() => {
     let isMounted = true
 
     const checkAccessToken = async () => {
+      console.log('auth-provider')
       try {
         const accessToken = await getAccessToken()
         if (accessToken) {
@@ -33,12 +34,12 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
           if (isMounted) {
             setUser(user)
           }
+        } else { 
+          setUser(null)
         }
       } catch {
+          // setUser(null)
       } finally {
-        if (isMounted) {
-          setIsAuthChecked(true)
-        }
         await SplashScreen.hideAsync()
       }
     }
@@ -53,9 +54,6 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   useEffect(() => {
     registerSetUser(setUser)
   }, [])
-
-  // console.log('USER',user)
-  if (!isAuthChecked) return null
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

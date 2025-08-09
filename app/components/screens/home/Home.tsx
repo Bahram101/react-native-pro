@@ -8,15 +8,14 @@ import Categories from './categories/Categories'
 import Products from './products/Products'
 
 const Home = () => {
+  console.log('HOME')
 
-
-  
   return (
-    <Layout> 
+    <Layout>
       <Header />
       <Banner />
-      <Categories />
-      <Products />
+      {/* <Categories /> */}
+      {/* <Products /> */}
     </Layout>
   )
 }

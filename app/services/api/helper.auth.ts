@@ -10,7 +10,7 @@ import { API_URL, getAuthUrl } from '@/config/api.config'
 export const getNewTokens = async () => {
   try {
     const refreshToken = await getRefreshToken()
-    console.log('RefreshToken!', refreshToken)
+    console.log('getNewTokenn!', refreshToken)
 
     if (!refreshToken || typeof refreshToken !== 'string') {
       throw new Error('Refresh token is missing or invalid!!')
@@ -25,6 +25,7 @@ export const getNewTokens = async () => {
         }
       }
     )
+    // console.log('Response from refresh token:', JSON.stringify(response, null, 2))
 
     if (response.data.accessToken) await saveToStorage(response.data)
 

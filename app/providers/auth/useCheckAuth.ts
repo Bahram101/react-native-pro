@@ -15,14 +15,14 @@ export const useCheckAuth = (routeName?: string) => {
 
   useEffect(() => {
     const checkAccessToken = async () => {
-      // const accessToken = await getAccessToken()
-      const accessToken = false;
-      console.log('GET_NEW_TOKENS-useCheckAuthh')
+      const accessToken = await getAccessToken()
+      console.log('CHECK_ACCESS_TOKEN')
       if (accessToken) {
         try {
           await getNewTokens()
         } catch (e) {
           if (errorCatch(e) === 'jwt expired') {
+            console.log('JWT expired, logging out...')
             await AuthService.logout()
             setUser(null)
           }
@@ -34,9 +34,12 @@ export const useCheckAuth = (routeName?: string) => {
   }, [])
 
   useEffect(() => {
+    console.log('useCheckAuth - user', user)
     const checkRefreshToken = async () => {
       const refreshToken = await getRefreshToken()
+        console.log('useCheckAuth - refresh', refreshToken)
       if (!refreshToken && user) {
+        console.log('useCheckAuth - Logging out')
         await AuthService.logout()
         setUser(null)
       }

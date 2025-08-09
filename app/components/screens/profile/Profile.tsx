@@ -14,7 +14,7 @@ import Layout from '@/components/layout/Layout'
 const Profile = () => {
   const { setUser } = useAuth()
   const { profile, isLoading } = useProfile() 
-
+  console.log('PROFILE')
   return (
     <Layout>
       <Heading isCenter>Profile</Heading>

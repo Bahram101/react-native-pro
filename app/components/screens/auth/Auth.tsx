@@ -19,7 +19,6 @@ const Auth: FC = () => {
       password: '123456'
     }
   })
-  console.log('AUTH')
 
   const { isLoading, loginSync, registerSync } = useAuthMutations(reset)
 

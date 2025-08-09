@@ -9,7 +9,6 @@ import { useGetAllProducts } from './useGetAllProducts'
 
 const Explorer = () => {
   const { products, isLoading } = useGetAllProducts()
-  console.log('EXPOLORER')
   return (
     <Layout>
       {isLoading ? (

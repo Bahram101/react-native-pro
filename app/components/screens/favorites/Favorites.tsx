@@ -7,7 +7,6 @@ import { useProfile } from '../profile/useProfile'
 
 const Favorites = () => {
   const { profile } = useProfile()
-  console.log('FAVORITES')
   return (
     <Layout>
       <Catalog title='Favorites' products={profile?.favorites || []} />

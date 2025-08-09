@@ -39,7 +39,7 @@ instance.interceptors.response.use(
         return instance.request(originalRequest)
       } catch (refreshError) {
         const errorMessage = errorCatch(refreshError)
-        console.log('errorMessage', errorMessage)
+        console.log('Refresh Error', errorMessage)
         if (errorCatch(refreshError) === 'jwt expired') {
           console.log('INTERCEPTOR JWT expired, logging out.....')
           await logoutWithContext(AuthService.logout)

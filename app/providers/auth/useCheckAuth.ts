@@ -14,32 +14,11 @@ export const useCheckAuth = (routeName?: string) => {
   const { user, setUser } = useAuth()
 
   useEffect(() => {
-    const checkAccessToken = async () => {
-      const accessToken = await getAccessToken()
-      console.log('CHECK_ACCESS_TOKEN')
-      if (accessToken) {
-        try {
-          await getNewTokens()
-        } catch (e) {
-          if (errorCatch(e) === 'jwt expired') {
-            console.log('JWT expired, logging out...')
-            await AuthService.logout()
-            setUser(null)
-          }
-        }
-      }
-    }
-
-    let ignore = checkAccessToken()
-  }, [])
-
-  useEffect(() => {
-    console.log('useCheckAuth - user', user)
     const checkRefreshToken = async () => {
       const refreshToken = await getRefreshToken()
-        console.log('useCheckAuth - refresh', refreshToken)
+        console.log('Check Refresh Token - useCheckAuth', refreshToken)
       if (!refreshToken && user) {
-        console.log('useCheckAuth - Logging out')
+        console.log('CheckRefreshToken - Logging out...')
         await AuthService.logout()
         setUser(null)
       }

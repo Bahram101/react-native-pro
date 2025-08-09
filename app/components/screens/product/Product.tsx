@@ -10,10 +10,9 @@ import { useProduct } from './useProduct'
 
 const Product = () => {
   const { product, isLoading } = useProduct() 
-
+  
   if (isLoading) return <Loader />
   if (!product) return null
-  console.log('PRODUCT', product)
   return (
     <Layout>
       <View className='items-center justify-center'>

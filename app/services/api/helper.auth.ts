@@ -5,12 +5,12 @@ import { EnumSecureStore, IAuthResponse } from '@/types/auth.interface'
 
 import { getRefreshToken, saveToStorage } from '@/services/auth/auth.helper'
 
-import { API_URL, getAuthUrl } from '@/config/api.config'
+import { API_URL } from '@/config/api.config'
 
 export const getNewTokens = async () => {
   try {
     const refreshToken = await getRefreshToken()
-    console.log('getNewTokenn!', refreshToken)
+    console.log('getNewTokens!', refreshToken)
 
     if (!refreshToken || typeof refreshToken !== 'string') {
       throw new Error('Refresh token is missing or invalid!!')
@@ -25,7 +25,6 @@ export const getNewTokens = async () => {
         }
       }
     )
-    // console.log('Response from refresh token:', JSON.stringify(response, null, 2))
 
     if (response.data.accessToken) await saveToStorage(response.data)
 

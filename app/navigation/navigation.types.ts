@@ -8,6 +8,7 @@ export type TypeRootStackParamList = {
   Explorer: undefined
   Profile: undefined
   Cart: undefined
+  Pin: undefined
   Product: {
     slug: string
   },

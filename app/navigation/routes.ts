@@ -9,6 +9,8 @@ import Profile from '@/components/screens/profile/Profile'
 import Search from '@/components/screens/search/Search'
 
 import { IRoute } from './navigation.types'
+import PinScreen from '@/components/screens/Pin/Pin'
+import Pin from '@/components/screens/Pin/Pin'
 
 export const routes: IRoute[] = [
   {
@@ -42,5 +44,9 @@ export const routes: IRoute[] = [
   {
     name: 'Product',
     component: Product
+  },
+  {
+    name: 'Pin',
+    component: Pin
   }
 ]

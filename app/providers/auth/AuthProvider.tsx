@@ -9,34 +9,36 @@ import {
 
 import { IUser } from '@/types/user.interface'
 
-import { getAccessToken, getNewTokens, getUserFromStorage } from '@/services/auth/auth.helper'
+import { errorCatch } from '@/services/api/error.api'
+import {
+  getAccessToken,
+  getNewTokens,
+  getUserFromStorage
+} from '@/services/auth/auth.helper'
 import { registerSetUser } from '@/services/auth/auth.helper-context'
+import { AuthService } from '@/services/auth/auth.service'
 
 import { IContext, TypeUserState } from './auth-provider.interface'
-import { errorCatch } from '@/services/api/error.api'
-import { AuthService } from '@/services/auth/auth.service'
 
 export const AuthContext = createContext({} as IContext)
 
-let ignore = SplashScreen.preventAutoHideAsync()
+SplashScreen.preventAutoHideAsync()
 
 const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
-  const [user, setUser] = useState<TypeUserState>({} as IUser)
+  const [user, setUser] = useState<TypeUserState>(null)
 
   useEffect(() => {
     let isMounted = true
 
-    const checkAccessToken = async () => {
-
+    const initAuth = async () => {
       try {
         const accessToken = await getAccessToken()
-
         if (accessToken) {
           try {
             await getNewTokens()
-            const userFromStorage = await getUserFromStorage()
+            const storedUser = await getUserFromStorage()
             if (isMounted) {
-              setUser(userFromStorage)
+              setUser(storedUser)
             }
           } catch (e) {
             if (errorCatch(e) === 'jwt expired') {
@@ -44,16 +46,13 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
               if (isMounted) setUser(null)
             }
           }
-        } else {
-          if (isMounted) setUser(null)
         }
-      } catch (err) {
       } finally {
         await SplashScreen.hideAsync()
       }
     }
 
-    let ignore = checkAccessToken()
+    initAuth()
 
     return () => {
       isMounted = false

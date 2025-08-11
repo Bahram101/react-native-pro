@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import axios from 'axios'
 import { deleteItemAsync, getItemAsync, setItemAsync } from 'expo-secure-store'
 
 import {
@@ -7,7 +8,7 @@ import {
   IAuthResponse,
   ITokens
 } from '@/types/auth.interface'
-import axios from 'axios'
+
 import { API_URL } from '@/config/api.config'
 
 export const getAccessToken = async () => {
@@ -48,7 +49,7 @@ export const saveToStorage = async (data: IAuthResponse) => {
   await saveTokensStorage(data)
   try {
     await AsyncStorage.setItem(EnumAsyncStorage.USER, JSON.stringify(data.user))
-  } catch (e) { }
+  } catch (e) {}
 }
 
 export const getNewTokens = async () => {
@@ -69,7 +70,8 @@ export const getNewTokens = async () => {
       }
     )
 
-    if (response.data.accessToken) await saveAccessToken(response.data.accessToken)
+    if (response.data.accessToken)
+      await saveAccessToken(response.data.accessToken)
 
     return response
   } catch (e) {

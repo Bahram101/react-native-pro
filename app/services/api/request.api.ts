@@ -12,28 +12,6 @@ export const request = async <T>(config: AxiosRequestConfig) => {
     return response.data
   }
 
-  // const onError = async (error: AxiosError<T>) => {
-  //   const { message, statusCode } = errorCatch(error)
-
-  //   // Проверяем статус 401 и наличие refresh токена
-  //   if (statusCode === 401) {
-  //     const refreshToken = await getItemAsync(EnumSecureStore.REFRESH_TOKEN)
-
-  //     // Если refresh токена нет — не показываем ошибку (это ожидаемо)
-  //     if (!refreshToken) {
-  //       return Promise.reject(error)
-  //     }
-  //   }
-
-  //   Toast.show({
-  //     type: 'error',
-  //     text1: 'Request error',
-  //     text2: message
-  //   })
-
-  //   return Promise.reject(error)
-  // }
-
   const onError = (error: AxiosError<T>) => {
     Toast.show({
       type: 'error',

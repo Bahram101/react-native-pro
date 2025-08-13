@@ -1,6 +1,5 @@
 import cn from 'clsx'
 import React, { FC, PropsWithChildren } from 'react'
-import { Pressable, Text } from 'react-native'
 
 import { Button, ButtonText } from '@/components/ui/button'
 

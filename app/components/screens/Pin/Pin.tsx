@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import CustomBtn from '@/components/ui/button/Button'
 
 import { useTypedNavigation } from '@/hooks/useTypedNavigation'
+import { savePinCode } from '@/utils/pinStore'
 
 const Pin = () => {
   const [pin, setPin] = useState('')
@@ -20,9 +21,12 @@ const Pin = () => {
       alert('PIN коды не совпадают')
       return
     }
-    // await savePinCode(pin)
+    await savePinCode(pin.toString())
     navigate('Home')
   }
+
+  console.log('pin',pin)
+  
   return (
     <View className='flex-1 justify-center items-center '>
       <View>

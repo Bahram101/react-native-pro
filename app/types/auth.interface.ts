@@ -4,7 +4,8 @@ export interface IAuthFormData extends Pick<IUser, 'email' | 'password'> {}
 
 export enum EnumSecureStore {
 	ACCESS_TOKEN = 'accessToken',
-	REFRESH_TOKEN = 'refreshToken'
+	REFRESH_TOKEN = 'refreshToken',
+	PIN = 'pin'
 }
 
 export enum EnumAsyncStorage {
